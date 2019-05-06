@@ -5,3 +5,52 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+require 'faker'
+
+puts '***** Je nettoie les DB'
+Event.destroy_all
+Attendance.destroy_all
+User.destroy_all
+
+# seed user
+puts '-> Je charge un jeu d\'essai User'
+30.times do
+  User.create!(
+    first_name: Faker::Name.first_name,
+    last_name: Faker::Name.last_name,
+    description: Faker::Lorem.sentence,
+    email: Faker::Internet.email,
+    encrypted_password: 'password'
+  )
+end
+puts 'Jeu d\'essai User avec 10 items'
+
+# seed Event
+puts '-> Je charge un jeu d\'essai Event'
+20.times do
+  Event.create!(
+    title: Faker::Lorem.sentence(3),
+    description: Faker::Lorem.paragraph(3),
+    start_date: Faker::Date.forward(90),
+    duration: rand(1..30)*5,
+    price: rand(1..1000),
+    location: Faker::Address.community
+  )
+end
+puts 'Jeu d\'essai Gossip avec 10 items'
+
+# seed Attendance
+puts '-> Je charge un jeu d\'essai Attendance'
+10.times do
+  Attendance.create!(
+    user_id: User.all.sample.id,
+    event_id: Event.all.sample.id,
+    stripe_customer_id: Faker::Number.unique.number(16)
+  )
+end
+puts 'Jeu d\'essai Attendance avec 10 items'
+
+
+puts '***** Base de données chargée avec un seed ! Have a nive run.'
+
