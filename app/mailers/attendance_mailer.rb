@@ -6,6 +6,7 @@ class AttendanceMailer < ApplicationMailer
     @attendance = attendance
     #on récupère l'instance user pour ensuite pouvoir la passer à la view en @user
     @user = User.find(@attendance.user_id)
+    #@admin = @attendance.event.admin au cas où il faille envoyer à l'admin ?? A tester
 
     #on définit une variable @url qu'on utilisera dans la view d’e-mail
     @url  = 'http://monsite.fr/login' 
