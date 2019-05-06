@@ -1,7 +1,7 @@
 class Event < ApplicationRecord
+  belongs_to :admin, class_name: "User", required: false
   has_many :attendances
   has_many :users, through: :attendances
-  belongs_to :administrator, class_name: 'User'
   #validate :duration_modulo_5
   #validate :start_date_cannot_be_in_the_past
 

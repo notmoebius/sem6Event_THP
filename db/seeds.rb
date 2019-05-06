@@ -20,7 +20,7 @@ puts '-> Je charge un jeu d\'essai User'
     first_name: Faker::Name.first_name,
     last_name: Faker::Name.last_name,
     description: Faker::Lorem.sentence,
-    email: Faker::Internet.email,
+    email: "thp_moebius@yopmail.com", #Faker::Internet.email,
     encrypted_password: 'password'
   )
 end
@@ -35,7 +35,8 @@ puts '-> Je charge un jeu d\'essai Event'
     start_date: Faker::Date.forward(90),
     duration: rand(1..30)*5,
     price: rand(1..1000),
-    location: Faker::Address.community
+    location: Faker::Address.community,
+    admin: User.all.sample
   )
 end
 puts 'Jeu d\'essai Gossip avec 10 items'
