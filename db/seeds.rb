@@ -20,7 +20,7 @@ puts '-> Je charge un jeu d\'essai User'
     first_name: Faker::Name.first_name,
     last_name: Faker::Name.last_name,
     description: Faker::Lorem.sentence,
-    email: "thp_moebius@yopmail.com", #Faker::Internet.email,
+    email: Faker::Name.first_name + "@yopmail.com", #Faker::Internet.email,
     encrypted_password: 'password'
   )
 end
@@ -45,8 +45,8 @@ puts 'Jeu d\'essai Gossip avec 10 items'
 puts '-> Je charge un jeu d\'essai Attendance'
 10.times do
   Attendance.create!(
-    user_id: User.all.sample.id,
-    event_id: Event.all.sample.id,
+    user: User.all.sample,
+    event: Event.all.sample,
     stripe_customer_id: Faker::Number.unique.number(16)
   )
 end

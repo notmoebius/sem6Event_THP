@@ -1,15 +1,16 @@
-class UserMailer < ApplicationMailer
+class AttendanceMailer < ApplicationMailer
   default from: 'no-reply@monsite.fr'
- 
-  def welcome_email(user)
+
+  def attendee_email(attendance)
+
+    @attendance = attendance
     #on récupère l'instance user pour ensuite pouvoir la passer à la view en @user
-    @user = user 
+    @user = User.find(@attendance.user_id)
 
     #on définit une variable @url qu'on utilisera dans la view d’e-mail
-    @url  = 'https://even-thp-toulouse.herokuapp.com/login'
+    @url  = 'http://monsite.fr/login' 
 
     # c'est cet appel à mail() qui permet d'envoyer l’e-mail en définissant destinataire et sujet.
-    mail(to: @user.email, subject: 'Bienvenue chez nous !') 
+    mail(to: @user.email, subject: 'Participation confirmée à '+ @attendance.event.title)
   end
-
 end

@@ -7,6 +7,6 @@ class Attendance < ApplicationRecord
   validates :stripe_customer_id, uniqueness: true
 
   def confirmation_send
-    UserMailer.attendee_email(self).deliver_now
+    AttendanceMailer.attendee_email(self).deliver_now
   end
 end
