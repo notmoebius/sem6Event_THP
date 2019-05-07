@@ -2,8 +2,8 @@ class Event < ApplicationRecord
   belongs_to :admin, class_name: "User", required: false
   has_many :attendances
   has_many :users, through: :attendances
-  #validate :duration_modulo_5
-  #validate :start_date_cannot_be_in_the_past
+  validate :duration_modulo_5
+  validate :start_date_cannot_be_in_the_past
 
   validates :start_date, presence: true 
    
@@ -17,16 +17,18 @@ class Event < ApplicationRecord
   
   validates :location, presence: true
  
-  # private
-  # def start_date_cannot_be_in_the_past
-  #   if start_date < Time.now
-  #     errors.add("can't be in the past")
-  #   end
-  # end
+  private
+  def start_date_cannot_be_in_the_past
+    if start_date < Time.now
+      #flash[:danger] = "Mets une date dans le futur !"
+      errors.add(:start_date, 'The start_date can not in the past !')
+    end
+  end
 
-  # def duration_modulo_5
-  #   if !(duration % 5 == 0 && duration >= 5)
-  #     errors.add("must be multiple of 5")
-  #   end
-  # end
+  def duration_modulo_5
+    if !(duration % 5 == 0 && duration >= 5)
+      #flash[:danger] = "c'est pas un multiple de 5 !"
+      errors.add(:duration, 'Must be a multiple of 5')
+    end
+  end
 end

@@ -15,7 +15,7 @@ class EventsController < ApplicationController
       'start_date' => params[:start_date],
       'price' => params[:price],
       'location' => params[:location])
-      #'admin_id' => current_user.id)
+      #'admin_id' => current_user.id) à revoir pour heroku, fonctionne en local
       puts "#" * 50
       puts @event.inspect
       puts "#" * 50
@@ -25,7 +25,7 @@ class EventsController < ApplicationController
       redirect_to '/'
     else
       puts "Error : create problem"
-      flash[:danger] = "Erreur dans la création de l'évènement !"
+      flash[:danger] = "Erreur dans la création de l'évènement (date passée ou durée pas multiple de 5) !"
       render '/events/new'
     end
   end
