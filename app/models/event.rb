@@ -16,18 +16,21 @@ class Event < ApplicationRecord
   validates :price, presence: true, numericality: { in: 1..1000, }
   
   validates :location, presence: true
+
+  # variable pour afficher date/heure de fin pour view events/show 
+  def end_date
+		return (self.start_date + self.duration*60)
+  end
  
   private
   def start_date_cannot_be_in_the_past
     if start_date < Time.now
-      #flash[:danger] = "Mets une date dans le futur !"
       errors.add(:start_date, 'The start_date can not in the past !')
     end
   end
 
   def duration_modulo_5
     if !(duration % 5 == 0 && duration >= 5)
-      #flash[:danger] = "c'est pas un multiple de 5 !"
       errors.add(:duration, 'Must be a multiple of 5')
     end
   end

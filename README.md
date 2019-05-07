@@ -33,7 +33,7 @@ https://even-thp-toulouse.herokuapp.com/
 - tu auras un mail de reset de mot de passe
 
 
-Reste à faire: afficher un évènement et pas de créateur de l'event.
+Reste à faire: afficher un évènement et pas de créateur de l'event (pbl admin_id dans heroku)
 
 * Quelques mails de test, mot de passe : password
 
