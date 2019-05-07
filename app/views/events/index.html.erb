@@ -12,12 +12,13 @@
   </div>
 </div>
 
+
 <div class="card-columns border-info container ">
 
-<% Event.all.each do |event| %>
+<% Event.all.order(start_date: :asc).each do |event| %>
     <div class="card border-info text-white bg-info mb-1">
       <div class="card-header bg-light text-danger">
-        <small>Quand : <%=event.start_date%></small>
+        <small>Quand : <%=event.start_date.strftime("%d %m %Y")%></small>
       </div>
       <div class="card-body bg-info">
         <%= link_to event_path(event.id), class:"list-group-item list-group-item-action"  do %>
