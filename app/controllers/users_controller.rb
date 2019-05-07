@@ -11,7 +11,7 @@ class UsersController < ApplicationController
 
   def is_adequate_user?
   	unless current_user == User.find(params['id'])
-  		flash[:danger] = "You can't access other users profile page"
+  		flash[:danger] = "Tssss, tu peux pas accéder à la page d'un autre utilisateur"
   		redirect_to user_path(current_user.id)
   	end
   end

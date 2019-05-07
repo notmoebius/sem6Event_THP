@@ -16,9 +16,7 @@ class EventsController < ApplicationController
       'price' => params[:price],
       'location' => params[:location])
       #'admin_id' => current_user.id) à revoir pour heroku, fonctionne en local
-      puts "#" * 50
-      puts @event.inspect
-      puts "#" * 50
+
     if @event.save
       puts "The event was succesfully saved !"
       flash[:success] = "Evènement créé !"
