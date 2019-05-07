@@ -15,7 +15,10 @@ Things you may want to cover:
 
 * Database initialization
 
-* How to run the test suite
+* How to run the application:
+
+just type this url in your browser :
+https://even-thp-toulouse.herokuapp.com/
 
 * Services (job queues, cache servers, search engines, etc.)
 
