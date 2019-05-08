@@ -7,16 +7,26 @@
 
 <div class="card-columns border-info container bg-info">
 
-      <p><strong class="text-warning">Titre : </strong>   <%=@event.title %><br/>
-			<strong class="text-warning">Description: </strong> <%=@event.description %><br/>
-			<strong class="text-warning">Date : </strong>       <%=@event.start_date.strftime("%d/%m/%Y") %> à <%=@event.start_date.strftime("%H:%M")%><br/>
-			<strong class="text-warning">Durée : </strong>      <%=@event.duration %> min.<br/>
-      <strong class="text-warning">Fin à : </strong>       <%=@event.end_date.strftime("%H:%M") %><br/>
-			<strong class="text-warning">Lieu : </strong>       <%=@event.location%><br/>
-			<strong class="text-warning">Prix : </strong>       <%=@event.price%> €<br/>
-			      Inscrit(s) : <%=@event.users.count%><br/>
-            Event géré par : <%=@event.manager.email%>
-      </p>
-
+  <p><strong class="text-warning">Titre : </strong>   <%=@event.title %><br/>
+  <strong class="text-warning">Description: </strong> <%=@event.description %><br/>
+  <strong class="text-warning">Date : </strong>       <%=@event.start_date.strftime("%d/%m/%Y") %> à <%=@event.start_date.strftime("%H:%M")%><br/>
+  <strong class="text-warning">Durée : </strong>      <%=@event.duration %> min.<br/>
+  <strong class="text-warning">Fin à : </strong>       <%=@event.end_date.strftime("%H:%M") %><br/>
+  <strong class="text-warning">Lieu : </strong>       <%=@event.location%><br/>
+  <strong class="text-warning">Prix : </strong>       <%=@event.price%> €<br/>
+        Inscrit(s) : <%=@event.users.count%><br/>
+        Event géré par : <%=(@event.manager_id!=nil)?(@event.manager.email):("N/A") %>
+  </p>
 </div>
-
+<br/><br/>
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-md-6 offset-md-3">
+      <% if current_user.id == @event.manager_id # user_signed_in? && %>
+        <%= link_to 'Gérer', edit_event_path(@event), class: "btn btn-warning btn-lg"  %>
+      <% elsif @event.price.to_i != 0%>
+        <%=link_to "Rejoindre l'évènement", new_charge_path, class: "btn btn-primary btn-lg" %>
+      <%end%>
+    </div>
+  </div>
+</div>
