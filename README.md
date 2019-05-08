@@ -32,24 +32,11 @@ https://even-thp-toulouse.herokuapp.com/
 - tu recevras un mail de bienvenue
 - tu auras un mail de reset de mot de passe
 
-Reste à faire: ajouter le créateur de l'event (pbl admin_id dans heroku)
 
 * Quelques mails de test, mot de passe : password
 
 sal2066@yopmail.com       | Arthur     | Sanford   
 jack8504@yopmail.com      | Charles    | Kunde     
 luke1456@yopmail.com      | Rickey     | Kiehn     
-bobbie9269@yopmail.com    | Norma      | Kilback   
-emma1877@yopmail.com      | Tyrone     | Zulauf    
-rey8213@yopmail.com       | Gigi       | Shanahan  
-sherilyn9678@yopmail.com  | Ricardo    | Gleason   
-carter8598@yopmail.com    | Eloy       | Gulgowski 
-rigoberto9662@yopmail.com | Truman     | Fay       
-clair6720@yopmail.com     | Gerry      | Pacocha   
-milford3469@yopmail.com   | Ranee      | Connelly  
-crystle1605@yopmail.com   | Ramon      | Bartoletti
-emanuel3092@yopmail.com   | Kim        | Harber    
-winnifred1970@yopmail.com | Mauro      | Prosacco  
-willetta2192@yopmail.com  | Walter     | Emmerich  
 ami8862@yopmail.com       | Jim        | Schumm    
 buddy9329@yopmail.com     | Javier     | Conroy 

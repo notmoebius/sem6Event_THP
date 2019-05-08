@@ -4,7 +4,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params['id'])
-    @user_events = Event.where(admin: @user.id)
+    @user_events = Event.where(manager: @user.id)
   end
 
   private

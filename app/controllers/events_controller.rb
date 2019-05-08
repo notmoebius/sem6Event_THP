@@ -15,8 +15,8 @@ class EventsController < ApplicationController
       'duration' => params[:duration],
       'start_date' => params[:start_date],
       'price' => params[:price],
-      'location' => params[:location])
-      #'admin_id' => current_user.id) à revoir pour heroku, fonctionne en local
+      'location' => params[:location],
+      'manager_id' => current_user.id) #à revoir pour heroku, fonctionne en local
 
     if @event.save
       puts "The event was succesfully saved !"

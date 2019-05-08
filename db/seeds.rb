@@ -36,7 +36,7 @@ puts '-> Je charge un jeu d\'essai Event'
     duration: rand(1..30)*5,
     price: rand(1..1000),
     location: Faker::Address.community
-    #admin: User.all.sample KO depuis la dernière update
+    #manager: User.all.sample # à décommenter pour le prochain seed depuis la dernière update
   )
 end
 puts 'Jeu d\'essai Gossip avec 10 items'

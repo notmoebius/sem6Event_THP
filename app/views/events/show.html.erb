@@ -14,7 +14,8 @@
       <strong class="text-warning">Fin à : </strong>       <%=@event.end_date.strftime("%H:%M") %><br/>
 			<strong class="text-warning">Lieu : </strong>       <%=@event.location%><br/>
 			<strong class="text-warning">Prix : </strong>       <%=@event.price%> €<br/>
-			      Inscrit(s) : <%=@event.users.count%>
+			      Inscrit(s) : <%=@event.users.count%><br/>
+            Event géré par : <%=@event.manager.email%>
       </p>
 
 </div>
