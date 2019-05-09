@@ -22,6 +22,7 @@
 <div class="container">
   <div class="row justify-content-center">
     <div class="col-md-6 offset-md-3">
+    <!-- faire test si user déjà inscrit et mettre bouton pour destroy -->
       <% if current_user.id == @event.manager_id # user_signed_in? && %>  
         <%= link_to 'Mon espace événement', edit_event_path(@event), class: "btn btn-warning btn-lg"  %>
       <% elsif @event.price.to_i != 0%>
