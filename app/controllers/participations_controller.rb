@@ -2,30 +2,28 @@ class ParticipationsController < ApplicationController
   #mettre test si il peut s'inscrire
   
   def new
+    @event = Event.find(params[:id])
   end
   
   def create
-    # Amount in cents
-    @amount = 500
-  
-    customer = Stripe::Customer.create({
-      email: params[:stripeEmail],
-      source: params[:stripeToken],
-    })
-  
-    charge = Stripe::Charge.create({
-      customer: customer.id,
-      amount: @amount,
-      description: 'Rails Stripe customer',
-      currency: 'usd',
-    })
-  
-  rescue Stripe::CardError => e
-    flash[:error] = e.message
-    redirect_to new_charge_path
+    @event = Event.find(params[:id])
+    puts "*" * 50
+    puts @event.id
+    puts current_user.id
+    puts "*" * 50
+    a = Attendance.create(stripe_customer_id: "test pour stripe",user: current_user, event: @event)
+
+  	flash[:success] = "Vous êtes inscrits à l'évènement"
+    redirect_to event_path(id: @event.id)
   end
 
   def index
-    
+    #@event = Event.find(params[:id])
+    @attendees = Attendance.where(event_id: @event.id) #pour test event_id = 75
+    puts "*" * 50
+    puts @event.id
+    puts current_user.id
+    puts @attendees.inspect
+    puts "*" * 50
   end
 end

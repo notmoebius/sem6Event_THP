@@ -1,7 +1,8 @@
 <h1>charges#new</h1>
 <h4>Vous allez procéder au paiement</h4>
 
-<%= form_tag charges_path do %>
+Pour l'évènement : <% @event.title %> à <%@event.location%> le <%@event.start_date%>
+<%= form_tag charges_path(id: @event.id) do %>
 
   <article>
     <% if flash[:error].present? %>
@@ -9,15 +10,18 @@
         <p><%= flash[:error] %></p>
       </div>
     <% end %>
-    <%= label_tag 'Montant : ' %>
-    <%= text_field_tag 'amount', @amount = 5 %>
+    <label class="amount">
+      <span>Montant: <%= "#{@event.price} €" %> </span>
+    </label>
+    <%#= label_tag 'Montant : ' %>
+    <%#= text_field_tag 'amount', @amount%>
 
   </article>
 
   <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
           data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
           data-description="A month's subscription"
-          data-amount="500"
+          data-amount="<%= @event.price * 100 %>"
           data-currency="eur"
           data-locale="auto"></script>
 <% end %>
