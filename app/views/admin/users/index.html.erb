@@ -1,0 +1,50 @@
+<h1> Affiche mes users</h1>
+
+<div class="container-fluid">
+    <h1 class="text-center">Membres</h1>
+    
+    <table>
+        <thead>
+            <tr>
+                <th>Nom</th>
+                <th>Prénom</th>
+                <th>E-mail</th>
+                <th>Inscrit le</th>
+                <th>Mis-à-jour le</th>
+                <th>Admin</th>
+                <th colspan="3"></th>
+            </tr>
+        </thead>
+        <tfoot>
+            <tr>
+                <th>Nom</th>
+                <th>Prénom</th>
+                <th>E-mail</th>
+                <th>Inscrit le</th>
+                <th>Mis-à-jour le</th>
+                <th>Admin</th>
+                <th colspan="3"></th>
+            </tr>
+        </tfoot>
+        <tbody>
+        <% @users.each do |user|%>
+            <tr>
+                <td><%= user.last_name %></td>
+                <td><%= user.first_name %></td>
+                <td><%= user.email %></td>
+                <td><%= user.created_at.strftime("%d %m %Y à %HH:%MM" ) %></td>
+                <td><%= user.updated_at.strftime("%d %m %Y à %HH:%MM") %></td>
+                <td>
+                    A voir <%#= image_tag 'checked.png' if user.is_admin %>
+                </td> 
+                <td><%= link_to 'Infos',  class: "btn btn-info" %></td>
+                <td><%= link_to 'Modifier', class: "btn btn-primary" %></td> 
+                <td><%= link_to 'Supprimer',  method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %></td>
+            </tr>
+        <% end %>
+        </tbody>
+    </table>
+</div>
+
+
+ 

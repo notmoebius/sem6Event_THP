@@ -1,6 +1,6 @@
-class Admin::UsersController < Admin::Controller
+class Admin::UsersController < ApplicationController
     def index
       @users = User.all
-      puts @users
+      #puts @users
     end
   end
