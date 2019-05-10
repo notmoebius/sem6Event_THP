@@ -4,6 +4,13 @@
   </div>
 </div>
 
+<h3>Photo de l'évènement</h3>
+<%if @event.picture.attached?%>
+  <%= image_tag @event.picture, alt: 'photo event' %>
+<%else%>
+  <p>=== Mettre une illustration pour l'évènement après sa création ===</p>
+<%end%>
+
 <%= form_tag url_for(action: 'create'), method: "post" do %>
 
   <div class="form-group">

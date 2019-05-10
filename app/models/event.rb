@@ -2,6 +2,8 @@ class Event < ApplicationRecord
   belongs_to :manager, class_name: "User", required: false
   has_many :attendances
   has_many :users, through: :attendances
+  has_one_attached :picture
+  
   validate :duration_modulo_5
   validate :start_date_cannot_be_in_the_past
 
