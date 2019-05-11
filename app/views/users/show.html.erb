@@ -5,6 +5,9 @@
   <p>Clique pour crééer un événement</p>
   <%=link_to "Créer un événement", new_event_path, class: "btn btn-primary btn-lg" %>
   <%=link_to "Changer ton mot de passe", edit_user_registration_path, class: "btn btn-primary btn-lg" %>
+	<%if current_user.is_admin? %>
+		<%=link_to "Accès admin", admin_users_path, class: "btn btn-warning btn-lg" %>
+	<%end%>
 </div>
 
 <div class="container d-flex justify-content-center">
@@ -32,12 +35,12 @@
 			</table>
 		</div>
 		<div class="col-sm-12 d-flex justify-content-center">
-			<%#= link_to edit_user_path(@user.id) do %>
+			<%= link_to edit_user_registration_path(id: @user.id) do %>
 			<button class="btn btn-icon btn-3 btn-primary" type="button">
 				<span class="btn-inner--icon"><i class="ni ni-bag-17"></i></span>
 			   <span class="btn-inner--text">Editer mes informations</span>
 			</button>
-			<%#end%>
+			<%end%>
 		</div>
 	</div>
 </div>
